@@ -8,14 +8,14 @@ export const PANELS = [
     {
         id: 2,
         title: "soon",
-        darkColor: "#E0A31B",
-        lightColor: "#E6D5B1"
+        darkColor: "#000",
+        lightColor: "#fff"
     },
     {
         id: 3,
         title: "someday",
-        darkColor: "#21C24F",
-        lightColor: "#AEDBBB"
+        darkColor: "#E0A31B",
+        lightColor: "#f3ebdb"
     },
 ]
 
@@ -69,4 +69,29 @@ export const TASKS = [
         archived: false,
         panelId: 3
     },
+    {
+        id: 7,
+        title: "laundry",
+        complete: false,
+        completedOn: null,
+        archived: false,
+        panelId: 1
+    },
+    {
+        id: 8,
+        title: "buy eggs",
+        complete: false,
+        completedOn: null,
+        archived: false,
+        panelId: 1
+    },
+    {
+        id: 9,
+        title: "take out trash",
+        complete: false,
+        completedOn: null,
+        archived: false,
+        panelId: 1
+    },
+
 ]
