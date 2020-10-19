@@ -8,7 +8,8 @@ import { ACTION_TYPES as PANEL_ACTION_TYPES } from "../panels/actions";
 
 const initialState = {
   panels: {},
-//   tasks: {},
+  tasks: {},
+  colorthemes: {}
 };
 
 const updateEntitiesData = (state, draft, entity, dataKey, data) => {
@@ -31,7 +32,9 @@ export default (state = initialState, action) => {
         const data = normalize(action.payload);
 
         updateEntitiesData(state, draft, "panels", "panel", data);
-        // updateEntitiesData(state, draft, "tasks", "task", data);
+        updateEntitiesData(state, draft, "tasks", "task", data);
+        updateEntitiesData(state, draft, "colorthemes", "colortheme", data);
+
         break;
 
       case ACTION_TYPES.RESET:

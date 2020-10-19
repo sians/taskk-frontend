@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
+import useTasks from '../../hooks/useTasks';
+
 import StyledTask, { HoverMenu } from './style';
 
 const Task = ({ 
-    task, 
-    title, 
+    taskId, 
     isSelected, 
     setIsSelected, 
     lightColor, 
     darkColor 
 }) => {
+    const { task } = useTasks(taskId)
+
     const handleSelected = () => {
-        if (task.id === isSelected) setIsSelected(null);            
-        else setIsSelected(task.id);
+        if (taskId === isSelected) setIsSelected(null);            
+        else setIsSelected(taskId);
     }
 
-    const [selected, setSelected] = useState(isSelected === task.id)
+    const [selected, setSelected] = useState(isSelected === taskId)
 
     useEffect(() => {
-        setSelected(isSelected === task.id)
+        setSelected(isSelected === taskId)
     }, [isSelected])
-
 
     return (
         <StyledTask 
@@ -28,7 +30,7 @@ const Task = ({
             isSelected={selected}
             lightColor={lightColor}
             darkColor={darkColor}
-            taskId={task.id}
+            taskId={taskId}
         >
             <HoverMenu 
                 selected={selected}
@@ -36,7 +38,7 @@ const Task = ({
             </HoverMenu>
 
             {/* wrap this in text component */}
-            {title}            
+            {task?.attributes?.title} 
             
         </StyledTask>
     )

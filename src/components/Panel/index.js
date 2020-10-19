@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TASKS } from '../../store/data';
+import useColorthemes from '../../hooks/useColorthemes';
 
 import Task from '../../components/Task';
 import IconButton from '../../components/IconButton';
@@ -8,37 +8,40 @@ import IconButton from '../../components/IconButton';
 import StyledPanel, { Header, Heading, Dragbar } from './style';
 
 const Panel = ({ panel, totalNumPanels }) => {
-    const tasks = TASKS.filter(task => task.panelId === panel.id)
-
     const [isSelected, setIsSelected] = useState(null);
+    
+    const taskRelations = panel?.relationships?.tasks?.data
 
-    console.log(isSelected, 'selected')
+    const { colortheme } = useColorthemes(panel?.relationships?.colortheme?.data?.id)
+    const primaryColor = colortheme?.attributes?.primaryColor;
+    const secondaryColor = colortheme?.attributes?.secondaryColor;
+    console.log(colortheme, 'total num pa?', totalNumPanels)
+
     return (
         <StyledPanel 
-            background={panel.lightColor}
-            color={panel.darkColor}
+            background={secondaryColor}
+            color={primaryColor}
             totalNumPanels={totalNumPanels}
         >
             <Dragbar 
-                darkColor={panel.darkColor}
+                darkColor={primaryColor}
             />
             <Header>
-                <Heading>{panel.title}</Heading>
+                <Heading>{panel?.attributes?.title}</Heading>
                 <IconButton
-                    lightColor={panel.lightColor}
-                    darkColor={panel.darkColor}
+                    lightColor={secondaryColor}
+                    darkColor={primaryColor}
                 />
             </Header>
-            {tasks && tasks.map((task, index) => {
+            {taskRelations && taskRelations.map((task, index) => {
                 return (
                     <Task 
-                        task={task}
-                        title={task.title}
+                        taskId={task.id}
                         key={`task-${index}`}
                         isSelected={isSelected}
                         setIsSelected={setIsSelected}
-                        lightColor={panel.lightColor}
-                        darkColor={panel.darkColor}
+                        lightColor={secondaryColor}
+                        darkColor={primaryColor}
                     />
                 )
             })}

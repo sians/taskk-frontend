@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
 import usePanels from '../../hooks/usePanels';
+import useTasks from '../../hooks/useTasks';
 import useAuth from '../../hooks/useAuth';
 
-import { PANELS } from '../../store/data';
 import Panel from '../../components/Panel';
 
 import DashboardContainer from './style';
@@ -19,15 +19,17 @@ const Dashboard = () => {
     }, [gotoSignInPage, user]);
 
     const { panels } = usePanels()
+    const { task } = useTasks(2)
+    console.log(task)
 
     return (
         <DashboardContainer>
-            {PANELS && PANELS.map((panel, index) => {
+            {panels && Object.keys(panels).map((panel, index) => {
                 return (
                     <Panel 
-                        panel={panel}
+                        panel={panels[panel]}
                         key={`panel-${index}`}
-                        totalNumPanels={PANELS.length}
+                        totalNumPanels={Object.keys(panels).length}
                     />
                 )
             })}
