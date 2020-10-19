@@ -10,6 +10,8 @@ export default () => {
   const { user, token, tokenDate } = STORAGE_AUTH_TOKEN;
 
   const setStorageAuthToken = value => {
+    console.log('sup froooom use storaaage', value)
+
     setStorageItem("AUTH_TOKEN", value);
   };
 

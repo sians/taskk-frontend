@@ -3,13 +3,14 @@ import { ThemeProvider } from "styled-components";
 
 import theme from "./theme";
 
-import Dashboard from './pages/Dashboard';
+import AppRouter from "./router";
+
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Dashboard />
+        <AppRouter />
       </div>
     </ThemeProvider>
   );

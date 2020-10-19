@@ -11,6 +11,8 @@ const instance = axios.create({
 //on successful response
 instance.interceptors.response.use(
   res => {
+    console.log('hanging out in client', res.headers)
+
     if (res.headers["authorization"]) {
       instance.defaults.headers.common["authorization"] =
         res.headers["authorization"];

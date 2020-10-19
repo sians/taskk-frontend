@@ -4,12 +4,12 @@ import {
     getDefaultMiddleware
   } from "@reduxjs/toolkit";
   
-//   import authReducer from "./auth";
+  import authReducer from "./auth";
   import entitiesReducer from './entities';
   import panelsReducer from './panels';
   
   const rootReducer = combineReducers({
-    // auth: authReducer,
+    auth: authReducer,
     entities: entitiesReducer,
     panels: panelsReducer
   });
