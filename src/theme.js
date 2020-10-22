@@ -1,7 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export default {
-    margin: 16
+    margin: 16,
+    colors: {
+      backdrop: 'rgba(60,60,60,.75)'
+    }
 }
 
 export const GlobalStyles = createGlobalStyle`

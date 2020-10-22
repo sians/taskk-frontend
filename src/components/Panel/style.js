@@ -8,8 +8,11 @@ const StyledPanel = styled.div`
 `;
 
 export const Dragbar = styled.div`
-    height: 10px;
+    height: ${props => props.menuIsOpen ? '50px' : '10px'};
     background-color: ${props => props.darkColor};
+    cursor: pointer;
+
+    transition: height 0.3s ease-out;
 `;
 
 export const Header = styled.div`

@@ -1,7 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from "styled-components";
+import { ModalProvider } from 'styled-react-modal'
 
 import theme from "./theme";
+import { Background } from "./components/Modal/style";
 
 import AppRouter from "./router";
 
@@ -9,9 +11,11 @@ import AppRouter from "./router";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <AppRouter />
-      </div>
+      <ModalProvider backgroundComponent={Background}>
+        <div className="App">
+          <AppRouter />
+        </div>
+      </ModalProvider>
     </ThemeProvider>
   );
 }
