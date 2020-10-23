@@ -10,15 +10,28 @@ const StyledPanel = styled.div`
 export const Dragbar = styled.div`
     height: ${props => props.menuIsOpen ? '50px' : '10px'};
     background-color: ${props => props.darkColor};
-    cursor: pointer;
 
     transition: height 0.3s ease-out;
+`;
+
+export const ExpandMenu = styled.div`
+    height: 20px;
+    width: 20px;
+    background-color: ${props => props.background};
+    color: ${props => props.color};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
 `;
 
 export const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 `;
 
 export const Heading = styled.div`

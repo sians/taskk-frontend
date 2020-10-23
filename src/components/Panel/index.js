@@ -4,10 +4,9 @@ import useColorthemes from '../../hooks/useColorthemes';
 
 import Task from '../../components/Task';
 import IconButton from '../../components/IconButton';
-import Modal from '../../components/Modal';
 import PanelMenu from '../../components/PanelMenu';
 
-import StyledPanel, { Header, Heading, Dragbar } from './style';
+import StyledPanel, { Header, Heading, Dragbar, ExpandMenu } from './style';
 
 const Panel = ({ panel, totalNumPanels }) => {
     const [isSelected, setIsSelected] = useState(null);
@@ -17,20 +16,6 @@ const Panel = ({ panel, totalNumPanels }) => {
     const { colortheme } = useColorthemes(panel?.relationships?.colortheme?.data?.id)
     const primaryColor = colortheme?.attributes?.primaryColor;
     const secondaryColor = colortheme?.attributes?.secondaryColor;
-
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const handleModalOpen = (e) => {
-      setModalIsOpen(!modalIsOpen);
-    }    
-    const renderModal = () => {
-        return (
-          <Modal
-            isOpen={modalIsOpen}
-            onClose={handleModalOpen}
-            allowScroll={true}
-          /> 
-        )
-      }
 
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const toggleMenu = () => {
@@ -46,7 +31,6 @@ const Panel = ({ panel, totalNumPanels }) => {
             <Dragbar 
                 darkColor={primaryColor}
                 menuIsOpen={menuIsOpen}
-                onClick={toggleMenu}
             >
                 <PanelMenu 
                     menuIsOpen={menuIsOpen}
@@ -54,12 +38,24 @@ const Panel = ({ panel, totalNumPanels }) => {
                 />
             </Dragbar>
             <Header>
+                <ExpandMenu 
+                    background={primaryColor}
+                    color={secondaryColor}
+                    onClick={toggleMenu}
+                >
+                    {menuIsOpen
+                    ?
+                        <span>-</span>
+                    :
+                        <span>+</span>
+                    }
+                </ExpandMenu>
                 <Heading>{panel?.attributes?.title}</Heading>
-                <IconButton
+                {/* <IconButton
                     lightColor={secondaryColor}
                     darkColor={primaryColor}
-                    action={handleModalOpen}
-                />
+                    action={toggleMenu}
+                /> */}
             </Header>
 
             {taskRelations && taskRelations.map((task, index) => {
@@ -74,7 +70,6 @@ const Panel = ({ panel, totalNumPanels }) => {
                     />
                 )
             })}
-            {renderModal()}
         </StyledPanel>
     )
 }

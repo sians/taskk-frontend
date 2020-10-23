@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import useTasks from '../../hooks/useTasks';
 
+import TaskMenu from '../TaskMenu';
 import StyledTask, { HoverMenu } from './style';
 
 const Task = ({ 
@@ -35,6 +36,13 @@ const Task = ({
             <HoverMenu 
                 selected={selected}
             >
+                <TaskMenu
+                    isVisible={selected}
+                    lightColor={lightColor}
+                    darkColor={darkColor}
+                >
+
+                </TaskMenu>
             </HoverMenu>
 
             {/* wrap this in text component */}
