@@ -6,6 +6,7 @@ import Task from '../../components/Task';
 import IconButton from '../../components/IconButton';
 import PanelMenu from '../../components/PanelMenu';
 
+
 import StyledPanel, { Header, Heading, Dragbar, ExpandMenu } from './style';
 
 const Panel = ({ panel, totalNumPanels }) => {
@@ -14,10 +15,11 @@ const Panel = ({ panel, totalNumPanels }) => {
     const taskRelations = panel?.relationships?.tasks?.data
 
     const { colortheme } = useColorthemes(panel?.relationships?.colortheme?.data?.id)
-    const primaryColor = colortheme?.attributes?.primaryColor;
-    const secondaryColor = colortheme?.attributes?.secondaryColor;
-
+    const primaryColor = colortheme?.attributes?.secondaryColor;
+    const secondaryColor = colortheme?.attributes?.primaryColor;
+    
     const [menuIsOpen, setMenuIsOpen] = useState(false);
+    
     const toggleMenu = () => {
         setMenuIsOpen(!menuIsOpen);
     }

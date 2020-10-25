@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Heading } from "../Text";
+
 import { 
     StyledModal, 
     CloseContainer,
@@ -33,11 +35,16 @@ const Modal = ({
             onBackgroundClick={toggleModal}
         >
             <CloseContainer onClick={toggleModal}>
+                
                 x
             </CloseContainer>
 
             <Inner>
-                hello modal
+                <Heading size={2}>
+                    settings
+                </Heading>
+
+
             </Inner>
 
 

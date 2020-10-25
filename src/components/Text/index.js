@@ -1,41 +1,40 @@
-// import styled from "styled-components";
+import styled from "styled-components";
 // // import { Link as RouterLink } from "react-router-dom";
 
-// const headingSizes = [
-//   `
-//   font-size: 48px;
-//   line-height: 64px;
-//   `,
-//   `
-//   font-size: 32px;
-//   line-height: 40px;
-//   `,
-//   `
-//   font-size: 24px;
-//   line-height: 32px;
-//   `,
-//   `
-//   font-size: 20px;
-//   line-height: 24px;
-//   `,
-//   `
-//   font-size: 18px;
-//   line-height: 24px;
-//   `,
-//   `
-//   font-size: 16px;
-//   line-height: 24px;
-//   `
-// ];
+const headingSizes = [
+  `
+  font-size: 48px;
+  line-height: 64px;
+  `,
+  `
+  font-size: 32px;
+  line-height: 40px;
+  `,
+  `
+  font-size: 24px;
+  line-height: 32px;
+  `,
+  `
+  font-size: 20px;
+  line-height: 24px;
+  `,
+  `
+  font-size: 18px;
+  line-height: 24px;
+  `,
+  `
+  font-size: 16px;
+  line-height: 24px;
+  `
+];
 
-// export const Heading = styled.h2`
-//   font-family: Space Grotesk;
-//   font-style: normal;
-//   font-weight: bold;
-//   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
-//   color: ${props => props.theme.colors.darkBlue};
-//   ${props => props.center && `text-align: center`}
-// `;
+export const Heading = styled.h2`
+  font-style: normal;
+  font-weight: bold;
+  ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
+  color: ${props => props.color};
+  ${props => props.center && `text-align: center`}
+`;
 
 // export const SubHeading = styled.h3`
 //   font-family: Space Grotesk;

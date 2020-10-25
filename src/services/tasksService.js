@@ -4,4 +4,14 @@ const getTasks = () => {
   return client.get("/tasks");
 };
 
-export default { getTasks, client };
+const updateTask = (id, payload) => {
+  return client.put(`/tasks/${id}`, {
+    task: payload
+  })
+}
+
+export default { 
+  getTasks, 
+  updateTask,
+  client 
+};

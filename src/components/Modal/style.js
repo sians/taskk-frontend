@@ -10,15 +10,19 @@ export const CloseContainer = styled.div`
 `;
 
 export const StyledModal = Modal.styled`
-    background-color: white;
-    border-radius: 16px;
-    min-height: 350px;
-    max-height: 75vh;
-    min-width: 300px;
-    max-width: 760px;
+    background-color: rgb(255 255 255 / 60%);
+    box-shadow: 0px 0px 50px #272727;
+    box-shadow: 0px 0px 30px #27272759;
+    color: ${props => props.theme.colors.modal.offwhite};
+    color: white;
+    height: 40vh;
+    width: 40vw;
+    max-width: 600px;
     padding: 30px;
     position: relative;
     overflow-y: scroll;
+
+    margin-top: -100px;
 `;
 
 export const ButtonSection = styled.div`
@@ -35,7 +39,8 @@ export const ButtonSection = styled.div`
 export const Background = styled.div`
     width: 100vw;
     height: 100vh;
-    background-color: ${props => props.theme.colors.backdrop};
+    background-color: ${props => props.theme.colors.modal.darkGrey};
+    background-color: rgb(220 219 222 / 10%);
     position: fixed;
     top: 0;
     left: 0;
@@ -51,4 +56,7 @@ export const IconDetails = styled.div`
 `;
 
 export const Inner = styled.div`
+    text-shadow: 3px 2px 5px #2d2d2d;
+    text-shadow: none;
+    
 `;

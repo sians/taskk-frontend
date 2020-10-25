@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import usePanels from '../../hooks/usePanels';
 import useTasks from '../../hooks/useTasks';
 import useAuth from '../../hooks/useAuth';
 
 import Panel from '../../components/Panel';
+import Modal from '../../components/Modal';
 
 import DashboardContainer from './style';
 
@@ -22,18 +23,38 @@ const Dashboard = () => {
     const { task } = useTasks(2)
     console.log(task)
 
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const toggleModal = (e) => {
+        setModalIsOpen(!modalIsOpen);
+      }    
+    
+      const renderModal = () => {
+        return (
+          <Modal
+            isOpen={modalIsOpen}
+            onClose={toggleModal}
+            allowScroll={true}
+          /> 
+        )
+      }          
+
     return (
-        <DashboardContainer>
-            {panels && Object.keys(panels).map((panel, index) => {
-                return (
-                    <Panel 
-                        panel={panels[panel]}
-                        key={`panel-${index}`}
-                        totalNumPanels={Object.keys(panels).length}
-                    />
-                )
-            })}
-        </DashboardContainer>
+        <>
+            <DashboardContainer modalIsOpen={modalIsOpen}>
+                    {panels && Object.keys(panels).map((panel, index) => {
+                        return (
+                            <Panel 
+                                panel={panels[panel]}
+                                key={`panel-${index}`}
+                                totalNumPanels={Object.keys(panels).length}
+                            />
+                        )
+                    })}
+
+            </DashboardContainer>
+            <div onClick={toggleModal}>clickme</div>
+            {renderModal()}
+        </>
     )
 }
 

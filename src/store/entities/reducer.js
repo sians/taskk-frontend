@@ -4,7 +4,7 @@ import normalize from "json-api-normalizer";
 import { ACTION_TYPES } from "./actions";
 
 import { ACTION_TYPES as PANEL_ACTION_TYPES } from "../panels/actions";
-// import { ACTION_TYPES as TASK_ACTION_TYPES } from "../tasks/actions";
+import { ACTION_TYPES as TASK_ACTION_TYPES } from "../tasks/actions";
 
 const initialState = {
   panels: {},
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
       // UPDATE ENTITIES DATA
         case PANEL_ACTION_TYPES.GET_PANELS_SUCCESS:
-        // case TASK_ACTION_TYPES.GET_TASKS_SUCCESS: 
+        case TASK_ACTION_TYPES.UPDATE_TASK_SUCCESS: 
         const data = normalize(action.payload);
 
         updateEntitiesData(state, draft, "panels", "panel", data);

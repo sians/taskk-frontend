@@ -28,4 +28,35 @@ export const makeGetTask = () =>
     (entities, id) => entities[id]
   );
 
-export { getTasks, getLoading, getError, getLoaded };
+// UPDATE
+
+const getUpdateTaskLoading = createSelector(
+  selectTasksState,
+  (state) => {
+    return state.updateTaskLoading || null;
+  }
+);
+
+const getUpdateTaskSuccess = createSelector(
+  selectTasksState,
+  (state) => {
+    return state.updateTaskSuccess || null;
+  }  
+);
+
+const getUpdateTaskError = createSelector(
+  selectTasksState,
+  (state) => {
+    return state.updateTaskError || null;
+  }  
+)
+
+export { 
+  getTasks, 
+  getLoading, 
+  getError, 
+  getLoaded,
+  getUpdateTaskLoading,
+  getUpdateTaskSuccess,
+  getUpdateTaskError
+};
