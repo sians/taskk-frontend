@@ -8,7 +8,8 @@ const IconButton = ({
     lightColor, 
     darkColor,
     icon,
-    action 
+    action, 
+    size
 }) => {
     return (
         <StyledIconButton
@@ -16,6 +17,7 @@ const IconButton = ({
             lightColor={lightColor}
             darkColor={darkColor}
             onClick={action}
+            size={size}
         >
             {icon}
         </StyledIconButton>

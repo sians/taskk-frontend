@@ -21,8 +21,8 @@ const Dashboard = () => {
 
     const { panels } = usePanels()
     const { task } = useTasks(2)
-    console.log(task)
 
+    const [isSelected, setIsSelected] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const toggleModal = (e) => {
         setModalIsOpen(!modalIsOpen);
@@ -47,6 +47,8 @@ const Dashboard = () => {
                                 panel={panels[panel]}
                                 key={`panel-${index}`}
                                 totalNumPanels={Object.keys(panels).length}
+                                isSelected={isSelected}
+                                setIsSelected={setIsSelected}
                             />
                         )
                     })}

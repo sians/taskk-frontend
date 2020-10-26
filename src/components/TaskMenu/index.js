@@ -62,7 +62,7 @@ const TaskMenu = ({
                             icon={
                                 <FontAwesomeIcon 
                                     icon={item.icon} 
-                                    color={lightColor}
+                                    color={darkColor}
                                     size='xs'
                                 />
                             }

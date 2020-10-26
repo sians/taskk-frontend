@@ -30,13 +30,12 @@ const Task = ({
         setSelected(isSelected === taskId)
     }, [isSelected])
 
-    console.log('task task', task)
     return (
         <StyledTask 
             onClick={handleSelected} 
             isSelected={selected}
-            lightColor={lightColor}
-            darkColor={darkColor}
+            lightColor={darkColor}
+            darkColor={lightColor}
             taskId={taskId}
             complete={task?.attributes?.complete}
         >

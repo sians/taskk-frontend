@@ -3,13 +3,25 @@ import PropTypes from "prop-types";
 
 import StyledTextArea, { TextAreaContainer } from "./style";
 
-const TextArea = ({ error, placeholder, defaultValue, label, onChange }) => (
+const TextArea = ({ 
+  error, 
+  placeholder, 
+  defaultValue, 
+  label, 
+  onChange, 
+  onFocus,
+  background,
+  color
+}) => (
   <TextAreaContainer error={error}>
     {label && <p>{label}</p>}
     <StyledTextArea
       resize={false}
       error={error}
       placeholder={placeholder}
+      background={background}
+      color={color}
+      onFocus={onFocus}
     ></StyledTextArea>
     {error && <p>{error}</p>}
   </TextAreaContainer>

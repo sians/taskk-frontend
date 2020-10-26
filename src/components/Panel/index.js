@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
 import useColorthemes from '../../hooks/useColorthemes';
 
 import Task from '../../components/Task';
 import IconButton from '../../components/IconButton';
 import PanelMenu from '../../components/PanelMenu';
+import TextArea from '../TextArea';
 
 
-import StyledPanel, { Header, Heading, Dragbar, ExpandMenu } from './style';
+import StyledPanel, { 
+    Header, 
+    Heading, 
+    Dragbar, 
+    ExpandMenu,
+    AddTask
+} from './style';
 
-const Panel = ({ panel, totalNumPanels }) => {
-    const [isSelected, setIsSelected] = useState(null);
-    
+const Panel = ({ panel, totalNumPanels, isSelected, setIsSelected }) => {    
     const taskRelations = panel?.relationships?.tasks?.data
 
     const { colortheme } = useColorthemes(panel?.relationships?.colortheme?.data?.id)
@@ -22,6 +30,10 @@ const Panel = ({ panel, totalNumPanels }) => {
     
     const toggleMenu = () => {
         setMenuIsOpen(!menuIsOpen);
+    }
+
+    const resetSelected = () => {
+        setIsSelected(null);
     }
 
     return (
@@ -53,12 +65,18 @@ const Panel = ({ panel, totalNumPanels }) => {
                     }
                 </ExpandMenu>
                 <Heading>{panel?.attributes?.title}</Heading>
-                {/* <IconButton
-                    lightColor={secondaryColor}
-                    darkColor={primaryColor}
-                    action={toggleMenu}
-                /> */}
             </Header>
+
+            <AddTask background={secondaryColor}>
+                <TextArea 
+                    background={secondaryColor}
+                    color={primaryColor}
+                    placeholder='soon i am gong to '
+                    onFocus={resetSelected}
+                />
+                <span>+</span> 
+
+            </AddTask>
 
             {taskRelations && taskRelations.map((task, index) => {
                 return (
